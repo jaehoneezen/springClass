@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+		
+	<bean id="greetingTarget" class="spring.aop.GreetingServiceImpl" p:greeting="hello"/>
+	
+	<!-- S:aspect(공통관심사항) 으로 사용 -->
+	<bean id="logAspect" class="spring.aop.LogAspect" />
+	<bean id="performanceAspect" class="spring.aop.PerformanceAspect" />
+	<!-- E:aspect(공통관심사항) 으로 사용 -->
+	
+	<aop:config proxy-target-class="true">
+		<!-- expression:aspectJ 표현식 요청한 method가 public method라면 -->
+		<aop:pointcut id="publicMethod" expression="execution(public * *(..))" />
+		<aop:aspect ref="logAspect">
+			<!-- method 시작전 실행 -->
+			<aop:before method="beforeLogging" pointcut-ref="publicMethod"/>
+			
+			<!-- returning값(returnValue)이랑 method에 사용된 매개변수명(returnValue)이랑 똑같아야한다 -->
+			<aop:after-returning method="afterLogging" pointcut-ref="publicMethod" returning="returnValue"/>
+			
+			<!-- error throwing 하는 method의 매개변수명(ex)과 같아야 throwing명(ex)과 같아야함 -->
+			<aop:after-throwing method="throwingLogging" pointcut-ref="publicMethod" throwing="ex"/>
+			
+			<!-- method종료후 항상 실행 -->
+			<aop:after method="alwaysLogging" pointcut-ref="publicMethod"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="performanceAspect">
+			<!-- publicMethod pointcut 실행되면 앞뒤로 timeCheck method 실행 -->
+			<aop:around method="timeCheck" pointcut-ref="publicMethod"/>
+		</aop:aspect>
+	</aop:config>
+	
+	
+
+
+</beans>

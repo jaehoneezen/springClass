@@ -1,0 +1,8 @@
+package spring.chap01;
+
+public class MainForAop {
+	public static void main(String[] args) {
+		String[] configLocations = new String[] {"applicationcontext.xml", "commonConcern.xml"};
+	}
+
+}

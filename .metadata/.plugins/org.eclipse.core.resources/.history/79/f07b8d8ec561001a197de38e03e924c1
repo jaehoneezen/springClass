@@ -1,0 +1,8 @@
+package spring.DI;
+
+public class Bar {
+	public void doVar() {
+		System.out.println("doBar()");
+	}
+
+}

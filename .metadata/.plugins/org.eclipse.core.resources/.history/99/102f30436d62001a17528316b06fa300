@@ -1,0 +1,10 @@
+package spring.DI;
+
+public class LookupEx {
+	Baz baz;
+	
+	public Baz getBazByLookUp() {
+		return null;
+	}
+
+}

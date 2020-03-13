@@ -1,0 +1,11 @@
+package spring.aop;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.cglib.core.Signature;
+
+public class PerformanceAspect {
+	public Object timeCheck(ProceedingJoinPoint joinPoint) throws Throwable {
+		Signature s = joinPoint.getSignature();
+	}
+
+}

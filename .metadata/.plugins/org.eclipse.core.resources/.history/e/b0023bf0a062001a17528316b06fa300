@@ -1,0 +1,17 @@
+package spring.annotation;
+
+import org.springframework.beans.factory.annotation.Required;
+
+public class Bar {
+	String name;
+	
+	@Required
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void doBar() {
+		System.out.println("Bar name :: " + name);
+	}
+
+}

@@ -1,0 +1,33 @@
+package spring.DI;
+
+import java.util.*;
+
+public class CollectionEx {
+	List<Baz> list; // Baz name a,b,c
+	Map<String, Baz> map;
+	Set set;
+	Properties pro;
+	
+	public CollectionEx() {};
+	
+	public void setList(List<Baz> list) {
+		this.list = list;
+	}
+	public void setMap(Map<String, Baz> map) {
+		this.map = map;
+	}
+	public void setSet(Set set) {
+		this.set = set;
+	}
+	public void setPro(Properties pro) {
+		this.pro = pro;
+	}
+	
+	public void doCol() {
+		Iterator iter = list.iterator();
+		for (int i = 0; i < list.size(); i++) {
+			list.get(i).doBaz();
+		}
+	}
+	
+}

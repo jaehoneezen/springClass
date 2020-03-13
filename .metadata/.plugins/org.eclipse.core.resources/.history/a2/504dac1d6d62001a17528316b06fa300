@@ -1,0 +1,15 @@
+package spring.DI;
+
+public class Baz {
+
+	String name;
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void doBaz() {
+		System.out.println("doBaz() 실행");
+	}
+
+}

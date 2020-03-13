@@ -1,0 +1,18 @@
+package spring.DI;
+
+public class A {
+	String id;
+	String name;
+	int birth;
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setBirth(int birth) {
+		this.birth = birth;
+	}
+
+}

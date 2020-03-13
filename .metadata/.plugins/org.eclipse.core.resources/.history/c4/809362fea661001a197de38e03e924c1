@@ -1,0 +1,14 @@
+package spring.chap01;
+
+import org.springframework.beans.factory.BeanFactory;
+
+public class Main {
+	public static void main(String[] args) {
+		Resource resource = new ClassPathResource("applicationContext.xml");
+		BeanFactory beanFactory = new XmlBeanFactory(resource);
+		WriteArticleService articleService = (WriteArticleService) beanFactory.getBean("writeArticleService");
+		articleService.write(new Article());
+		
+	}
+
+}

@@ -1,0 +1,20 @@
+package spring.aop;
+
+// targetObejct(핵심로직)
+public class GreetingServiceImpl implements GreetingService {
+	private String greeting;
+	public void setGreeting(String greeting) {
+		this.greeting = greeting;
+	}
+	
+	@Override
+	public void sayHello(String name) {
+		System.out.println("sayHello :: " + greeting  + " :: " + name);
+	}
+	
+	@Override
+	public void sayGoodBye(String name) {
+		System.out.println("sayGoodBye :: " + greeting  + " :: " + name);
+	}
+
+}

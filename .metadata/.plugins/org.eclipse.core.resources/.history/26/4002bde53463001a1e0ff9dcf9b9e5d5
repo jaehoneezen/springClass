@@ -1,0 +1,6 @@
+package spring.chap01;
+
+@Component
+public interface ArticleDao {
+	void insert(Article article);
+}

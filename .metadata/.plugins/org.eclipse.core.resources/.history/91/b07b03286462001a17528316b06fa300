@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="A">
+		<constructor-arg value="javaKing" />
+		<constructor-arg value="java" />
+		<constructor-arg value="19900509" />
+	</bean>
+	
+	<bean>
+		<property name="id" value="javaKing"/>
+		<property name="name" value="java"/>
+		<property name="birth" value="19900509"/>
+	</bean>
+
+
+</beans>

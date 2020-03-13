@@ -1,0 +1,11 @@
+package spring.DI;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class AMain {
+	public AMain() {
+		ApplicationContext context = new GenericXmlApplicationContext("A.xml");
+	}
+
+}

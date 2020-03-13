@@ -1,0 +1,28 @@
+package spring.annotation;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class Baz {
+	String name;
+	String name2;
+
+	@Value("winter")
+	@Value("winter2")
+	public void setName(String name, String name2) {
+		this.name = name;
+		this.name2 = name2;
+	}
+	
+	// wBar를 name 으로 갖는 bean 생성
+	@Bean(name="wBar")
+	public Bar getBar () {
+		Bar b = new Bar();
+		b.setName(name, name2);
+		System.out.println(b.getName());
+		return b;
+	}
+
+}

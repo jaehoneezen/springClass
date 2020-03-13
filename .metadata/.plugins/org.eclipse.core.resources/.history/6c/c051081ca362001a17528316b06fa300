@@ -1,0 +1,27 @@
+package spring.annotation;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class Baz {
+	String name;
+
+	@Value("winter")
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Bean
+	public Bar getBar () {
+		Bar b = new Bar();
+		b.setName(name);
+		return b;
+	}
+
+
+
+
+
+}

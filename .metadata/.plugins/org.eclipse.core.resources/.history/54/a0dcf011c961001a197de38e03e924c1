@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="bar" class="spring.DI.Bar" />
+	<bean id="baz" class="spring.DI.Baz" />
+	<bean id="baz2" class="spring.DI.Baz" />
+	
+	<bean id="foo" class="spring.DI.Foo">
+		<constructor-arg ref="bar"/>
+		<constructor-arg ref="baz"/>
+	</bean>
+	
+	<bean id="foo2" class="spring.DI.Foo">
+		<constructor-arg index="0" value="hello"/>
+		<constructor-arg index="1" value="10"/>
+		<constructor-arg index="2" ref="bar"/>
+	</bean>
+
+
+</beans>

@@ -1,0 +1,34 @@
+package spring.chap01;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class WriteArticleServiceImpl implements WriteArticleService {
+	// ArticleDao 구현 객체 받아오겠다?
+	// ArticleDao articleDao = new ArticleDao 이런식으로 사용 x, 컨테이너에서 객체 생성
+	private ArticleDao articleDao;
+	
+	// 생성자
+	public WriteArticleServiceImpl() {}
+	@Qualifier("mySQLArticleDao")
+	public WriteArticleServiceImpl(ArticleDao articleDao) {
+		this.articleDao = articleDao;
+	}
+	
+	// setter
+	@Resource
+	public void setArticleDao(ArticleDao articleDao) {
+		System.out.println("setArticleDao 실행");
+		this.articleDao = articleDao;
+	}
+	
+	
+	public void write(Article article) {
+		System.out.println("WriteArticleServiceImpl.write() 실행");
+		// ArticleDao 에 의존
+		articleDao.insert(article);
+	}
+
+}

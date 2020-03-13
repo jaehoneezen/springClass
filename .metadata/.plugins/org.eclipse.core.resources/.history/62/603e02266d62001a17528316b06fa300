@@ -1,0 +1,16 @@
+package spring.DI;
+
+public class LookupEx {
+	Baz baz;
+	
+	String name;
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Baz getBazByLookUp() {
+		return null;
+	}
+
+}

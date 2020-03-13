@@ -1,0 +1,81 @@
+package spring.mybatisPractice;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+import spring.data.dao.MemberDao;
+import spring.data.dto.MemberDto;
+
+public class MemberMain {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		ApplicationContext context = new GenericXmlApplicationContext("mybatisConfig.xml");
+		MemberDao dao = context.getBean("memberDao", MemberDao.class);
+		
+		Map<String, String> m = new HashMap<>();
+		m.put("id", "a");
+		m.put("name", "upup");
+		
+		//System.out.println(dao.updateMember(m));
+		
+		boolean stop = false;
+		while(!stop) {
+			System.out.println("1.selectAll, 2.selectOne, 3.updateName, 4.insert, 5.delete, 6.exit");
+			System.out.print("input > ");
+			int choose = scan.nextInt();
+			
+			switch (choose) {
+				case 1: selectAll(dao); break;
+				case 2: selectOne(dao); break;
+				case 3: break;
+				case 4: break;
+				case 5: break;
+				case 6: stop = exit(); 
+						break;
+			}
+		}
+	}
+	
+	public static boolean exit() {
+		System.out.println("프로그램 종료");
+		return true;
+	}
+	
+	public static void selectAll(MemberDao dao) {
+		List<MemberDto> members = dao.getAll();
+		System.out.println(members);
+	}
+	
+	public static void selectOne(MemberDao dao) {
+		Scanner scan = new Scanner(System.in);
+		String id;
+		System.out.print("검색할 id 입력 >");
+		id = scan.nextLine();
+		
+		if (id != null) {
+			MemberDto member = dao.getOne(id);
+			if (member != null) {
+				System.out.println(member);
+			} else {
+				System.out.println("검색결과 없음");
+			}
+		} else {
+			System.out.println("id 입력 오류");
+		}
+	}
+	
+	public static void updateName(MemberDao dao) {
+		Scanner scan = new Scanner(System.in);
+		String id, name;
+		System.out.print("업데이트할 id 입력 >");
+		id = scan.nextLine();
+		System.out.print("업데이트할 name 입력 >");
+		name = scan.nextLine();
+		
+	}
+}

@@ -1,0 +1,8 @@
+package spring.chap01;
+
+public class AnnoMain {
+	public static void main(String[] args) {
+		
+	}
+
+}

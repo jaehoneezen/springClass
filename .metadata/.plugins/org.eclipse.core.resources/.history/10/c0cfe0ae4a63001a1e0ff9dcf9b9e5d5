@@ -1,0 +1,19 @@
+package spring.aop;
+
+import org.springframework.context.ApplicationContext;
+
+public class Main {
+	public static void main(String[] args) { 
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("aopConfig.xml");
+		GreetingService g = ctx.getBean("greetingTarget", GreetingService.class);
+		g.sayHello("이젠아카데미");
+		
+		try {
+			g.sayGoodBye("이젠아카데미");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+
+}

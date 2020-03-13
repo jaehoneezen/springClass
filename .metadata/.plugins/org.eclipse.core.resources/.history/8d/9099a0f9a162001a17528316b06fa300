@@ -1,0 +1,28 @@
+package spring.annotation;
+
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Bar {
+	String name;
+	SubBar subBar;
+	
+	
+	@Required
+	@Value("fall")
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Value(new SubBar())
+	public void setSubBar(SubBar subBar) {
+		this.subBar = subBar;
+	}
+	
+	public void doBar() {
+		System.out.println("Bar name :: " + name);
+	}
+
+}

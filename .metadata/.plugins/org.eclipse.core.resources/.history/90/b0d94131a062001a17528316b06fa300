@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- annotation 사용하기위한 context namespace추가 -->
+<!-- namespace 에 context가 없으면 jar파일 필요, spring context -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<!-- @Required, @Autowired, @Qualifier, @Resource, @PostConstruct, @PreDestroy -->
+	<!-- 없으면 annotation 실행 안됨 -->
+	<context:annotation-config/>
+	
+	<bean id="bar" name="bar2" class="spring.annotation.Bar" p:name="spring" />
+	<bean id="bar1" class="spring.annotation.Bar" p:name="summer">
+		<qualifier value="second"/>
+	</bean>
+	<bean id="foo" class="spring.annotation.Foo" />
+</beans>

@@ -1,0 +1,6 @@
+package spring.aop;
+
+public class GreetingServiceImpl implements GreetingService {
+	
+
+}

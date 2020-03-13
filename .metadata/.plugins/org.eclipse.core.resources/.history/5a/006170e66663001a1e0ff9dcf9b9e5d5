@@ -1,0 +1,33 @@
+package spring.aop;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+@Component
+@Aspect
+public class LogAspect {
+	@Pointcut("execution(public * *(..))")
+	private void publicPointCut() {}
+	
+	public void beforeLogging(JoinPoint point){
+			System.out.println("** 메서드 호출 전**");
+	}
+
+	@AfterReturning(pointcut="publicPointCut()", returning="returnValue")
+	public void afterLogging(JoinPoint point, Object returnValue){
+		System.out.println("** 메서드 호출 후**");
+	}
+	
+	@AfterThrowing(pointcut="publicPointCut()", throwing="ex")
+	public void throwingLogging(Exception ex){
+		System.out.println("** 예외 발생 : "+ex.getMessage()+"**");
+	}
+	
+	public void alwaysLogging(){
+		System.out.println("** 항상 실행 **");      
+	}
+}

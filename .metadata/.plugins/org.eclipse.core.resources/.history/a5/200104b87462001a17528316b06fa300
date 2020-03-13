@@ -1,0 +1,7 @@
+package spring.DI;
+
+import java.util.*;
+
+public class CollectionEx {
+
+}
