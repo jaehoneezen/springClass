@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="hello.do">hello</a>
+	<a href="hello.do">hello</a><br>
+	<a href="article/newArticle.do">http GET/POST</a>
 </body>
 </html>

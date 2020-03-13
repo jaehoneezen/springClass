@@ -1,0 +1,7 @@
+package spring.controller;
+
+@Controller
+@RequestMapping("/article/newArticle.do")
+public class NewArticleController {
+
+}
