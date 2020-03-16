@@ -1,5 +1,0 @@
-package spring.data.dao;
-
-public class MemberDao {
-
-}

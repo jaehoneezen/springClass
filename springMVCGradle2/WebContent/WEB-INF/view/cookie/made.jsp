@@ -6,8 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="hello.do">hello</a><br>
-	<a href="article/newArticle.do">http GET/POST</a>
-	<a >insert mem</a>
+쿠키생성
 </body>
 </html>

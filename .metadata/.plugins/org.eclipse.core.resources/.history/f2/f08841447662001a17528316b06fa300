@@ -1,8 +1,0 @@
-package spring.DI;
-
-public class CollectionMain {
-	public static void main(String[] args) {
-		
-	}
-
-}
