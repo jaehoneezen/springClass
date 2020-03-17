@@ -34,6 +34,12 @@ dependencies {
 	// https://mvnrepository.com/artifact/javax.el/javax.el-api
 	//compile group: 'javax.el', name: 'javax.el-api', version: '3.0.0'
 	
+	// https://mvnrepository.com/artifact/javax.validation/validation-api
+	compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	
+	// https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+	
 	// S:DB dependency
 	
 	// https://mvnrepository.com/artifact/org.apache.commons/commons-dbcp2

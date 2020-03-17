@@ -18,6 +18,7 @@
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>*.do</url-pattern>
+		<url-pattern>/game/*</url-pattern>
 	</servlet-mapping>
 	
 	
