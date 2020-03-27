@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+	<select id="selectBooksOrderInfoByBookname" resultType="spring.model.BookSaleDto" parameterType="String">
+		select orders.orderid, orders.saleprice, book.bookid, book.bookname, book.publisher, book.price 
+		from orders
+		inner join book on orders.bookid = book.bookid
+		<where>
+			<if test="#{bookname} != null">
+			book.bookname like #{bookname}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectBooksByOrderCustomerName" resultType="spring.model.BookDto" parameterType="String">
+		select book.bookid, book.bookname, book.publisher, book.price 
+		from orders
+		inner join customer on orders.custid = customer.custid
+		inner join book on orders.bookid = book.bookid
+		<where>
+			<if test="#{cname} != null">
+			customer.name = #{cname}
+			</if>
+		</where>
+	</select>
+</mapper>

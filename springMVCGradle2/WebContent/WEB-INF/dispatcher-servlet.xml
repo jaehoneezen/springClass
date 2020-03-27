@@ -4,11 +4,13 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 		
-	<context:component-scan base-package="/controller, /service, /data.*, /spring.model, /validator, /common"></context:component-scan>
+	<context:component-scan base-package="/controller, /service, /data.*, /spring.*, /validator, /common"></context:component-scan>
 	<context:annotation-config />
 	<context:property-placeholder location="classpath:db.properties" local-override="true" />
 	
@@ -38,6 +40,10 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 	
+	<bean id="empDao" class="spring.service.EmpDao" p:sqlSessionFactory-ref="sqlSessionFactory" />
+	<bean id="BookDao" class="spring.service.BookDao" p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
+	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
@@ -46,6 +52,44 @@
 			</list>
 		</property>
 	</bean>
+	
+	<!-- multipart/formdata 일때 CommonsMultipartResolver가 서버에 임시저장해준다 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</bean>
+	
+	<!-- interceptor, aop와 비슷한 기능 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/event/list.do" />
+			<bean class="controller.EventExpirationCheckInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<!-- 해당type의 exception 이발생하면 value의 viewname으로 이동 -->
+			<props>
+				<prop key="java.lang.ArithmeticException">error/mathException</prop>
+				<prop key="java.lang.Exception">error/exception</prop>	
+			</props>
+		</property>
+	</bean>
+	
+	<mvc:annotation-driven>
+	    <mvc:message-converters>
+	        <!-- @ResponseBody로 String 처리할때 한글처리 -->
+	        <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+	            <property name="supportedMediaTypes">
+	                <list>
+	                    <value>text/html;charset=UTF-8</value>
+	                </list>
+	            </property>
+	        </bean>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+
+
 	
 
 

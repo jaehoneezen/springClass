@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<context:component-scan base-package="/download.*"></context:component-scan>
+	<context:annotation-config />
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+	
+	
+	<bean id="pageXmlReport"
+		class="org.springframework.web.servlet.view.xml.MarshallingView">
+		<property name="marshaller" ref="marshaller" />
+		<!-- controller 에서 지정한 model의 key / marshaller 에 지정돼있는 type이어야 한다 -->
+		<property name="modelKey" value="report" />
+	</bean>
+
+	<!-- Jaxb2Marshaller : object 받아서 xml로 변환시켜줌 -->
+	<bean id="marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<!-- value값으로 넘어온 type의 객채를 xml로 변환시킨다 -->
+		<property name="classesToBeBound">
+			<list>
+				<value>download.controller.PageRankReport</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="pageJsonReport" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+</beans>
