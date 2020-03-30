@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="springMVCGradle" path="/springMVCGradle" reloadable="true" source="org.eclipse.jst.jee.server:springMVCGradle"/><Context docBase="springMVCGradle2" path="/springMVCGradle2" reloadable="true" source="org.eclipse.jst.jee.server:springMVCGradle2"/></Host>
+      <Context docBase="springMVCGradle" path="/springMVCGradle" reloadable="true" source="org.eclipse.jst.jee.server:springMVCGradle"/><Context docBase="springMVCGradle2" path="/springMVCGradle2" reloadable="true" source="org.eclipse.jst.jee.server:springMVCGradle2"/><Context docBase="springDownloadPrac" path="/springDownloadPrac" reloadable="true" source="org.eclipse.jst.jee.server:springDownloadPrac"/><Context docBase="springTilesPrac" path="/springTilesPrac" reloadable="true" source="org.eclipse.jst.jee.server:springTilesPrac"/><Context docBase="springBoardPrac" path="/springBoardPrac" reloadable="true" source="org.eclipse.jst.jee.server:springBoardPrac"/><Context docBase="careMe" path="/careMe" reloadable="true" source="org.eclipse.jst.jee.server:careMe"/></Host>
     </Engine>
   </Service>
 </Server>

@@ -19,6 +19,7 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String form() {
+		System.out.println("==================loginForm==================");
 		return "loginForm";
 	}
 

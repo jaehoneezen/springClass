@@ -6,8 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="tiles/login/login.do">login Form</a><br>
-	<a href="tiles/member/regist.do">register Form</a><br>
-	<a href="test/hello.do">dispatcher Test</a><br>
+hello world!
 </body>
 </html>
